@@ -25,7 +25,6 @@ exports.signinAdmin = async (req, res) => {
     const user = await signInWithEmailAndPassword(getAuth(), email, password);
 
     res.send(user);
-    console.log(user);
   } catch (error) {
     res.send(error.message);
   }
