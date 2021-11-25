@@ -13,11 +13,10 @@ const seasonsSchema = {
 };
 
 const contentSchema = Joi.object().keys({
-  type: Joi.string().required(),
+  type: Joi.string().required().valid("movies", "tv_shows"),
   name: Joi.string().required(),
   description: Joi.string().required(),
   releaseYear: Joi.number().max(2021).required(),
-  seasonCount: Joi.number().integer().optional(),
   seasons: Joi.array().min(1).items(Joi.object(seasonsSchema)).optional(),
 });
 
@@ -38,7 +37,6 @@ const updateContentSchema = Joi.object().keys({
   name: Joi.string().optional(),
   description: Joi.string().optional(),
   releaseYear: Joi.number().max(2021).optional(),
-  seasonCount: Joi.number().integer().optional(),
   seasons: Joi.array().min(1).items(Joi.object(seasonsSchema)).optional(),
 });
 
