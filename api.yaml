@@ -1,0 +1,275 @@
+swagger: "2.0"
+info:
+  title: Content API
+  description: This is my case-solution API Documentation
+  version: 1.0
+  contact:
+  liscence:
+    name: Apache 2.0
+    url: "http://www.apache.org/liscences/LIS"
+  servers:
+    -url: http://localhost:8080
+    description: THis is my local Server
+schemes: [http]
+securityDefinitions:
+  firebase:
+    authorizationUrl: 
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "https://securetoken.google.com/gain-mavi"
+    x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+    x-google-audiences: "gain-mavi"
+tags:
+  name: Content
+  description: The contents managing API
+  name: Admin
+  description: Admin managing API
+
+paths:
+  /content:
+    post:
+      summary: Create a new content
+      tags: [Content]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      security:
+        - firebase: []
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/components/schemas/Content"
+      responses:
+        "200":
+          description: Content was created successfully !
+
+
+  /contents:
+    get:
+      summary: show all content records.
+      tags: [Content]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      security:
+        - firebase: []
+      responses:
+        "200":
+          description: OK
+
+  /content/:id:
+  get:
+    summary: show the content detail.
+    tags: [Content]
+    produces:
+      - application/json
+    consumes:
+      - application/json
+    security:
+      - firebase: []
+    responses:
+      "200":
+        description: OK
+
+
+
+  /content/:id/season:
+    put:
+      summary: Add a new season to the seasons section of the content
+      tags: [Content]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      security:
+        - firebase: []
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/components/schemas/addSeason"
+      responses:
+        "200":
+          description: OK
+
+  /content/:id/season/:seasonIndex/episode:
+    put:
+      summary: Add a new episode inside a specific season within a content
+      tags: [Content]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      security:
+        - firebase: []
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: "#/components/schemas/addEpisode"
+      responses:
+        "200":
+          description: OK
+
+
+  /content/:id:
+    patch:
+      summary: Update properties inside content
+      tags: [Content]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: path
+        name: id
+        required: true
+      responses:
+        "200":
+          description: OK
+
+  /content/:id:
+    delete:
+      summary: Delete content
+      tags: [Content]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      security:
+        - firebase: []
+      parameters:
+        - name: id
+          in: path        
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Content was deleted successfully!
+
+  /auth/signup:
+    post:
+      summary: Create a new Admin
+      tags: [Admin]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/components/schemas/signupAdmin"
+      responses:
+        "200":
+          description: Admin was created successfully !
+
+
+  /auth/signin:
+    post:
+      summary: Login
+      tags: [Admin]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/components/schemas/signinAdmin"
+      responses:
+
+        "200":
+          description: Admin was logged in!
+
+  /auth/delete:id:
+    delete:
+      summary: Delete the admin
+      tags: [Admin]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+         -name: id
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Admin was deleted successfully!
+
+
+
+components:
+  schemas:
+    Content:
+      type: object
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        releaseYear:
+          type: number
+        seasonCount:
+          type: number
+        seasons:
+          type: array
+          items:
+            type: object
+            properties:
+              seasonName:
+                type: string
+              episodes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    episodeName:
+                      type: string
+    signupAdmin:
+      type: object
+      properties:
+        email:
+          type: string
+        firstName:
+          type: string
+        LastName:
+          type: string
+        password:
+          type: string
+    signinAdmin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    addSeason:
+      type: array
+      items:
+        type: object
+        properties:
+          seasonName:
+            type: string
+    addEpisode:
+      type: array
+      items:
+        type: object
+        properties:
+          episodeName:
+            type: string
+  
+  
