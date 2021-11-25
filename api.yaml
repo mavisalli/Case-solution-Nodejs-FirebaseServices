@@ -8,7 +8,7 @@ info:
     name: Apache 2.0
     url: "http://www.apache.org/liscences/LIS"
   servers:
-    -url: http://localhost:8080
+    -url: http://localhost:5000
     description: THis is my local Server
 schemes: [http]
 securityDefinitions:
