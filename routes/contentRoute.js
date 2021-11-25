@@ -9,7 +9,7 @@ const {
   addEpisode,
 } = require("../controllers/contentController");
 
-const schemas = require("../handlers/validation");
+const schemas = require("../handlers/contentValidation");
 const validate = require("../middlewares/validate");
 
 const { checkIfAuthenticated } = require("../middlewares/authMiddleware");
