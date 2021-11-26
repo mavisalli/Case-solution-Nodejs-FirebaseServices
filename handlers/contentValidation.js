@@ -1,4 +1,5 @@
 const Joi = require("joi");
+// All request body validation rules regarding content are written below with Joi.
 
 const seasonsSchema = {
   seasonName: Joi.string().required(),
@@ -13,7 +14,7 @@ const seasonsSchema = {
 };
 
 const contentSchema = Joi.object().keys({
-  type: Joi.string().required().valid("movies", "tv_shows"),
+  type: Joi.string().required().valid("movie", "tv_show"),
   name: Joi.string().required(),
   description: Joi.string().required(),
   releaseYear: Joi.number().max(2021).required(),
@@ -33,7 +34,7 @@ const addEpisodesSchema = Joi.array().items(
 );
 
 const updateContentSchema = Joi.object().keys({
-  type: Joi.string().optional().valid("movies", "tv_shows"),
+  type: Joi.string().optional().valid("movie", "tv_show"),
   name: Joi.string().optional(),
   description: Joi.string().optional(),
   releaseYear: Joi.number().max(2021).optional(),
