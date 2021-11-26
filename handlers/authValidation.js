@@ -1,5 +1,6 @@
 const Joi = require("joi");
 
+// All request body validation rules regarding register/login are written below with Joi.
 const signUpSchema = Joi.object().keys({
   email: Joi.string().required(),
   firstName: Joi.string().required(),
