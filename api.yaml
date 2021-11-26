@@ -95,13 +95,6 @@ paths:
       security:
         - Bearer: []
       parameters:
-        # - in: query
-        #   name: type
-        #   required: true
-        #   type: array
-        #   items:
-        #     type: string
-        #     enum: [movie,tv_series]
         - in: body
           name: body
           required: true
@@ -164,7 +157,7 @@ paths:
         - in: body
           name: body
           required: false
-          description: Update the content info
+          description: Update any property of the content info
           schema:
             $ref: "#/components/schemas/Content"
       responses:
