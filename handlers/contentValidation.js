@@ -33,7 +33,7 @@ const addEpisodesSchema = Joi.array().items(
 );
 
 const updateContentSchema = Joi.object().keys({
-  type: Joi.string().optional(),
+  type: Joi.string().optional().valid("movies", "tv_shows"),
   name: Joi.string().optional(),
   description: Joi.string().optional(),
   releaseYear: Joi.number().max(2021).optional(),
