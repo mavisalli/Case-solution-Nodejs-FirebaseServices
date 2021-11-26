@@ -68,8 +68,6 @@ exports.addEpisode = async (req, res, next) => {
 
     let content = (await contentRef.get()).data();
 
-    console.log(content.seasons.episodes);
-
     if (
       content.seasons[seasonIndex - 1].episodes &&
       content.seasons[seasonIndex - 1].episodes.length
@@ -81,12 +79,10 @@ exports.addEpisode = async (req, res, next) => {
         episodes: data,
       };
 
-    console.log(content);
-
     await db.collection("contents").doc(req.params.id).set(content);
     res.send("new episode added successfully");
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send("No such season has been found!");
   }
 };
 
@@ -96,7 +92,7 @@ exports.updateContent = async (req, res) => {
       .collection("contents")
       .doc(req.params.id)
       .set(req.body, { merge: true });
-    res.json({ id: req.params.id });
+    res.send("content was updated successfully");
   } catch (error) {
     res.send(error);
   }

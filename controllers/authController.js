@@ -1,6 +1,7 @@
 const { getAuth, signInWithEmailAndPassword } = require("firebase/auth");
 const admin = require("firebase-admin");
 const db = require("../db");
+const httpStatus = require("http-status");
 var bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -51,7 +52,7 @@ exports.signinAdmin = async (req, res) => {
 
     res.send(user);
   } catch (error) {
-    res.send(error.message);
+    res.status(httpStatus.BAD_REQUEST).send(error.message);
   }
 };
 
@@ -60,6 +61,6 @@ exports.deleteAdmin = async (req, res) => {
     await admin.auth().deleteUser(req.params.id);
     res.json({ message: "deleted successfully !" });
   } catch (error) {
-    res.send(error.message);
+    res.status(httpStatus.BAD_REQUEST).send(error.message);
   }
 };
