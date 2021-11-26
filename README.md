@@ -4,7 +4,7 @@ This is an API project for managing admins and for content management.
 
 🔎 In this project, Contents only can be managed by admins. Firebase Auth is used for authentication processes.
 
-Technologies and Frameworks I use:
+Technologies and Tools I use:
 
  :ballot_box_with_check: Back-end: Node.js => express
  
