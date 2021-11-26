@@ -9,7 +9,7 @@ info:
     url: "http://www.apache.org/liscences/LIS"
   servers:
     -url: http://localhost:5000
-    description: THis is my local Server
+    description: This is my local Server
 schemes: [http]
 securityDefinitions:
  Bearer:
@@ -24,6 +24,66 @@ tags:
   description: Admin managing API
 
 paths:
+
+  /auth/signup:
+    post:
+      summary: Create a new Admin
+      tags: [Admin]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/components/schemas/signupAdmin"
+      responses:
+        "200":
+          description: Admin was created successfully !
+
+
+  /auth/signin:
+    post:
+      summary: Login
+      tags: [Admin]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/components/schemas/signinAdmin"
+      responses:
+        "200":
+          description: Admin was logged in!
+
+  /auth/delete/{id}:
+    delete:
+      summary: Delete the admin
+      tags: [Admin]
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: content id
+          type: string
+      responses:
+        "200":
+          description: Admin was deleted successfully!
+
+
+
+
+
   /content:
     post:
       summary: Create a new content
@@ -35,6 +95,13 @@ paths:
       security:
         - Bearer: []
       parameters:
+        # - in: query
+        #   name: type
+        #   required: true
+        #   type: array
+        #   items:
+        #     type: string
+        #     enum: [movie,tv_series]
         - in: body
           name: body
           required: true
@@ -47,7 +114,7 @@ paths:
 
   /contents:
     get:
-      summary: show all content records.
+      summary: show all content records
       tags: [Content]
       produces:
         - application/json
@@ -61,7 +128,7 @@ paths:
 
   /content/{id}:
     get:
-      summary: show the content detail.
+      summary: show the content detail by content id
       tags: [Content]
       produces:
         - application/json
@@ -79,7 +146,7 @@ paths:
         "200":
           description: OK
     patch:
-      summary: update content
+      summary: update content by content id
       tags: [Content]
       produces:
         - application/json
@@ -96,13 +163,16 @@ paths:
         - in: body
           name: body
           required: true
+          description: Update the content info
           type: object
+          schema:
+            $ref: "#/components/schemas/Content"
       responses:
         "200":
           description: Content was updated successfully!
 
     delete:
-      summary: delete content
+      summary: delete content by content id
       tags: [Content]
       produces:
         - application/json
@@ -180,101 +250,7 @@ paths:
           description: New episode added successfully !
 
 
-  # /content/{id}:
-  #   patch:
-  #     summary: Update properties inside content
-  #     tags: [Content]
-  #     produces:
-  #       - application/json
-  #     consumes:
-  #       - application/json
-  #     security:
-  #       - Bearer: []
-  #     parameters:
-  #     - in: path
-  #       name: id
-  #       required: true
-  #       type: string
-  #     responses:
-  #       "200":
-  #         description: OK
-
-  # /content/{id}:
-  #   delete:
-  #     summary: Delete content
-  #     tags: [Content]
-  #     produces:
-  #       - application/json
-  #     consumes:
-  #       - application/json
-  #     security:
-  #       - Bearer: []
-  #     parameters:
-  #       - in: path   
-  #         name: id
-  #         required: true
-  #         type: string
-  #     responses:
-  #       "200":
-  #         description: Content was deleted successfully!
-  
-
-
-  /auth/signup:
-    post:
-      summary: Create a new Admin
-      tags: [Admin]
-      produces:
-        - application/json
-      consumes:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: "#/components/schemas/signupAdmin"
-      responses:
-        "200":
-          description: Admin was created successfully !
-
-
-  /auth/signin:
-    post:
-      summary: Login
-      tags: [Admin]
-      produces:
-        - application/json
-      consumes:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: "#/components/schemas/signinAdmin"
-      responses:
-        "200":
-          description: Admin was logged in!
-
-  /auth/delete/{id}:
-    delete:
-      summary: Delete the admin
-      tags: [Admin]
-      produces:
-        - application/json
-      consumes:
-        - application/json
-      parameters:
-        - in: path
-          name: id
-          required: true
-          description: content id
-          type: string
-      responses:
-        "200":
-          description: Admin was deleted successfully!
-
+ 
 
 
 components:
