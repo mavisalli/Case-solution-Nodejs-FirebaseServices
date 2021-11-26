@@ -105,6 +105,7 @@ paths:
         - in: body
           name: body
           required: true
+          description: The type should be "movie" or "tv_show". If you are going to record movie information, it is not necessary to fill in the seasons section.
           schema:
             $ref: "#/components/schemas/Content"
       responses:
@@ -160,13 +161,14 @@ paths:
           required: true
           description: content id
           type: string
+          readonly: true
         - in: body
           name: body
           required: true
           description: Update the content info
           type: object
           schema:
-            $ref: "#/components/schemas/Content"
+            $ref: "#/components/schemas/patchContent"
       responses:
         "200":
           description: Content was updated successfully!
@@ -280,6 +282,9 @@ components:
                   properties:
                     episodeName:
                       type: string
+      
+        
+
     signupAdmin:
       type: object
       properties:
@@ -298,6 +303,15 @@ components:
         birthDay:
           type: string
           format: date
+      example:
+        email: mavi.baris96@gmail.com
+        firstName: Mavi
+        lastName: Şallı
+        password: pass1234
+        phoneNumber: "+905302395940"
+        photoUrl: https://avatars.githubusercontent.com/u/72470885?v=4
+        birthDay: 10-15-1996
+    
     signinAdmin:
       type: object
       properties:
@@ -319,5 +333,31 @@ components:
         properties:
           episodeName:
             type: string
+    patchContent:
+      type: object
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        releaseYear:
+          type: number
+        seasons:
+          type: array
+          items:
+            type: object
+            properties:
+              seasonName:
+                type: string
+              episodes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    episodeName:
+                      type: string
+
   
   
