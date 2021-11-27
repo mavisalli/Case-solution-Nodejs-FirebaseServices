@@ -14,6 +14,15 @@ Technologies and Tools I use:
  
  :ballot_box_with_check: Swagger
  
+### Usage
+npm install
+npm start
+
+```
+### Usage with docker
+docker build -t case_solution .
+docker run -it -p 5000:5000 case_solution
+```
  
 ### Folder Structure
 To create sustainable and understandable structure, I tried to collapse all related files under a folder also I have followed global rules for people who will try to understand codes.
@@ -21,6 +30,7 @@ To create sustainable and understandable structure, I tried to collapse all rela
 - Logical processes related to the endpoints took place under controller folder.
 - All process handler such as Auth-validation and Content-validation is located under handler folder.
 - Authentication controls and determination of errors according to validation schemes are located under middlewares folder.
+
 
 
 
