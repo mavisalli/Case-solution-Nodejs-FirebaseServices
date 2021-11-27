@@ -16,10 +16,11 @@ Technologies and Tools I use:
  
 ### Usage
 npm install
+
 npm start
 
-```
 ### Usage with docker
+```
 docker build -t case_solution .
 docker run -it -p 5000:5000 case_solution
 ```
