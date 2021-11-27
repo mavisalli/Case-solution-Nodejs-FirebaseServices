@@ -87,14 +87,21 @@ exports.addEpisode = async (req, res, next) => {
 };
 
 exports.updateContent = async (req, res) => {
+  const id = req.params.id;
   try {
-    await db
-      .collection("contents")
-      .doc(req.params.id)
-      .set(req.body, { merge: true });
-    res.send("content was updated successfully");
+    const content = await db.collection("contents").doc(id).get();
+
+    if (content.exists) {
+      await db
+        .collection("contents")
+        .doc(req.params.id)
+        .set(req.body, { merge: true });
+      res.send("content was updated successfully");
+    } else {
+      res.status(404).send("No such content has been found!");
+    }
   } catch (error) {
-    res.send(error);
+    res.send(error.message);
   }
 };
 
