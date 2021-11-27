@@ -15,9 +15,9 @@ Technologies and Tools I use:
  :ballot_box_with_check: Swagger
  
 ### Usage
-npm install
+-npm install
 
-npm start
+-npm start
 
 ### Usage with docker
 ```
