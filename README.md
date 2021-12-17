@@ -17,6 +17,8 @@ Technologies and Tools I use:
 ### Usage
 -npm install
 
+-Add your config information of firebase and firebase-admin to the env file.
+
 -npm start
 
 ### Usage with docker
