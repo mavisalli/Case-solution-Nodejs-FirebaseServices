@@ -78,6 +78,9 @@ To create sustainable and understandable structure, I tried to collapse all rela
 - All process handler such as Auth-validation and Content-validation is located under handler folder.
 - Authentication controls and determination of errors according to validation schemes are located under middlewares folder.
 
+### Swagger
+You can access the api documentation by typing http://localhost:5000/api-docs/ in the url.
+
 ### Postman Collection
 https://www.postman.com/mavibaris/workspace/public/collection/16085875-d5ce638a-d13e-4910-9e97-38cb39c86534?ctx=documentation
 
