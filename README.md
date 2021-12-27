@@ -15,6 +15,13 @@ Technologies and Tools I use:
  :ballot_box_with_check: Swagger
  
 ### Usage
+Clone the repository
+
+```
+cd desktop 
+git clone https://github.com/mavisalli/case_solution.git
+```
+Then open the project in ide and follow below commands:
 
 Create environment file (.env) for your config information of your firebase, firebase-admin and change its content like below.
 
@@ -28,8 +35,6 @@ STORAGE_BUCKET=
 MESSAGING_SENDER_ID=
 APP_ID=
 MEASUREMENT_ID=
-
-
 ```
 #### Firebase Admin Database config
 
@@ -44,13 +49,12 @@ AUTH_URI=
 TOKEN_URI=
 AUTH_PROVIDER=
 CLIENT_URL=
-
 ```
+Install dependencies and run app server with development mode
 
 ```
 npm install
 npm start
-
 ```
 
 
