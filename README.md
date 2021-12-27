@@ -32,7 +32,7 @@ PORT=
 HOST=
 HOST_URL=
 ```
-#### Firebase Database config
+#### Firebase config
 
 ```
 API_KEY=
@@ -43,7 +43,7 @@ MESSAGING_SENDER_ID=
 APP_ID=
 MEASUREMENT_ID=
 ```
-#### Firebase Admin Database config
+#### Firebase-Admin config
 
 ```
 TYPE=
