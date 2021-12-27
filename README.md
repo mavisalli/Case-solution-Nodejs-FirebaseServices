@@ -25,6 +25,13 @@ Then open the project in ide and follow below commands:
 
 Create environment file (.env) for your config information of your firebase, firebase-admin and change its content like below.
 
+#### Express Server config
+
+```
+PORT=
+HOST=
+HOST_URL=
+```
 #### Firebase Database config
 
 ```
