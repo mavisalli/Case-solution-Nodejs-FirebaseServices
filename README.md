@@ -15,11 +15,44 @@ Technologies and Tools I use:
  :ballot_box_with_check: Swagger
  
 ### Usage
--npm install
 
--Add your config information of firebase and firebase-admin to the env file.
+Create environment file (.env) for your config information of your firebase, firebase-admin and change its content like below.
 
--npm start
+#### Firebase Database config
+
+```
+API_KEY=
+AUTH_DOMAIN=
+PROJECT_ID=
+STORAGE_BUCKET=
+MESSAGING_SENDER_ID=
+APP_ID=
+MEASUREMENT_ID=
+
+
+```
+#### Firebase Admin Database config
+
+```
+TYPE=
+PROJECT_ID=
+PRIVATE_KEY_ID=
+PRIVATE_KEY=
+CLIENT_EMAIL=
+CLIENT_ID=
+AUTH_URI=
+TOKEN_URI=
+AUTH_PROVIDER=
+CLIENT_URL=
+
+```
+
+```
+npm install
+npm start
+
+```
+
 
 ### Usage with docker
 ```
