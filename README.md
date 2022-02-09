@@ -19,7 +19,7 @@ Clone the repository
 
 ```
 cd desktop 
-git clone https://github.com/mavisalli/case_solution.git
+git clone https://github.com/mavisalli/Case-solution-Nodejs-FirebaseServices.git
 ```
 Then open the project in ide and follow below commands:
 
